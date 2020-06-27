@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>엔젤케이크</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-1.12.3.js"></script>
+	<script>	
+  $(function(){
+  	//menu
+  	$(".nav > ul > li").mouseover(function(){
+  		$(this).find(".submenu").stop().slideDown(200);
+  	});
+  	$(".nav > ul > li").mouseout(function(){
+  		$(this).find(".submenu").stop().slideUp(200);
+  	});
+
+
+    //slide
+  	var slideCount = $(".slideImg").length;
+  	var currentIndex = 0;
+  	var slidePosition;
+
+  	setInterval(function(){
+  		if(currentIndex < 2){
+  			currentIndex++;
+  		} else {
+  			currentIndex = 0;
+  		}
+  		slidePosition = currentIndex * (-1200)+"px";
+  		$(".slideWrap").animate({left:slidePosition},400);
+  	},3000);
+
+
+  	//POPUP창
+  	$(".layerpopup").click(function(){
+			$(".layer").show();
+			$(".layer-bg").show();
+		});
+
+		$(".layer .close").click(function(){
+			$(".layer").hide();
+			$(".layer-bg").hide();
+		});
+
+
+    //tap-menu
+    var tabBtn = $(".tab-btn > ul > li");
+		var tabCon = $(".tab-con > div");
+		tabCon.hide().eq(0).show();
+
+		tabBtn.click(function(e){
+			e.preventDefault();
+			var target = $(this);
+			var index = target.index();
+			tabBtn.removeClass("active");
+			target.addClass("active");
+			tabCon.css("display","none");
+			tabCon.eq(index).css("display","block");
+		});
+  });
+	</script>
+</head>
+
+<body>
+	<div id="wrap" class="clearfix">
+		<header id="header">
+			<h1 class="logo">로고</h1>
+			<div class="nav">
+				<ul>
+					<li>
+						<a href="#">메뉴1</a>
+						<ul class="submenu">
+							<li><a href="#">서브메뉴1</a></li>
+							<li><a href="#">서브메뉴2</a></li>
+							<li><a href="#">서브메뉴3</a></li>
+							<li><a href="#">서브메뉴4</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">메뉴2</a>
+						<ul class="submenu">
+							<li><a href="#">서브메뉴1</a></li>
+							<li><a href="#">서브메뉴2</a></li>
+							<li><a href="#">서브메뉴3</a></li>
+							<li><a href="#">서브메뉴4</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">메뉴3</a>
+						<ul class="submenu">
+							<li><a href="#">서브메뉴1</a></li>
+							<li><a href="#">서브메뉴2</a></li>
+							<li><a href="#">서브메뉴3</a></li>
+							<li><a href="#">서브메뉴4</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">메뉴4</a>
+						<ul class="submenu">
+							<li><a href="#">서브메뉴1</a></li>
+							<li><a href="#">서브메뉴2</a></li>
+							<li><a href="#">서브메뉴3</a></li>
+							<li><a href="#">서브메뉴4</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+		<section id="banner">
+			<div class="slideWrap clearfix">
+
+		   	<div class="slideImg">	
+		      <h2>슬라이드 이미지</h2>
+		      <img src="slide/s-main01.jpg" alt="#">
+		   	</div>
+
+		   	<div class="slideImg">	
+		      <h2>슬라이드 이미지</h2>
+		      <img src="slide/s-main02.jpg" alt="#">
+		   	</div>
+
+		   	<div class="slideImg">	
+		      <h2>슬라이드 이미지</h2>
+		      <img src="slide/s-main03.jpg" alt="#">
+		   	</div>
+
+			</div>
+		</section>
+
+		<section id="contents" class="clearfix">
+			<div class="cont1">
+
+				<div class="tab-menu">
+					<div class="tab-btn">
+						<ul>
+							<li class="active"><a href="#">공지사항1</a></li>
+							<li><a href="#">공지사항2</a></li>
+						</ul>
+				  </div>
+
+					<div class="tab-con">
+						<div>1. tab menu desc<br>2. tab menu desc<br>3. tab menu desc</div>
+						<div>4. tab menu desc<br>5. tab menu desc<br>6. tab menu desc</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="cont2"><h3>갤러리</h3></div>				
+			<div class="cont3"><h3 class="layerpopup">팝업</h3></div>				
+		</section>
+
+
+		<footer id="footer" class="clearfix">
+			<div class="foot1"><h3>로고</h3></div>
+			<div class="foot2"><h3>copyright</h3></div>
+			<div class="foot3"><h3>sns</h3></div>
+		</footer>
+	</div>
+
+
+	<div class="layer-bg"></div>
+	<div class="layer">
+		<h5>타이틀</h5>
+		<p></p>
+		<a href="#" class="close">닫기</a>
+	</div>
+
+
+</html>
